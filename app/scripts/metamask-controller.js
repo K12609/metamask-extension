@@ -1673,6 +1673,11 @@ export default class MetamaskController extends EventEmitter {
     if (deviceName === 'lattice') {
       keyring.appName = 'MetaMask';
     }
+    if (deviceName === 'trezor') {
+      const model = keyring.getModel();
+      this.appStateController.setTrezorModel(model);
+    }
+
     keyring.network = this.networkController.getProviderConfig().type;
 
     return keyring;
